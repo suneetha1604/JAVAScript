@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TO-Do-List</title>
+    <style>
+        body{
+            background-color: greenyellow;
+        }
+        .container{
+            display: flex;
+           flex-direction: column;
+           align-items: center;
+        }
+        #inputitem{
+            width:30vw;
+            height:35px;
+            border-color: burlywood;
+        }
+        #addbutton{
+           width:56px;
+           height:40px;
+           background-color: aqua;
+        }
+
+    </style>
+</head>
+<body>
+   <div class="container">
+    <h1 class="row">TO-DO-LIST</h1>
+    <br>
+    <div class="row">
+        <form>
+            <input type="text"  width="60px" placeholder="Todo list item" id="inputitem"/>
+            <br><br/>
+            <input type="button" value="Add" onclick="listitem()" width="100px" id="addbutton"/>
+            <br>
+            
+
+        </form>
+        <div class="row">
+             <ul id="list-box">
+
+            </ul>
+        </div>
+    </div>
+   </div> 
+   <script>
+    function listitem(){
+        let item=document.getElementById("inputitem");
+        let ulitem=document.getElementById("list-box");
+        if(item.value!=""){
+            let liitem=document.createElement("li");
+            liitem.appendChild(document.createTextNode(item.value));
+            ulitem.appendChild(liitem);
+            item.value=""
+            liitem.onclick=function(){
+                this.parentNode.removeChild(this);
+
+            }
+        }
+        else{
+            alert("please enter the value at todolist");
+        }
+
+    }
+   </script>
+</body>
+</html>
